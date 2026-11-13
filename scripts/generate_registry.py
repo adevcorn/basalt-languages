@@ -187,6 +187,9 @@ def main() -> None:
         entry["kind"] = "provider"
         entry["homepage"] = REPO
         if asset in artifacts:
+            package = artifacts[asset]["package"]
+            if package in versions:
+                entry["version"] = versions[package]
             entry["target"] = artifacts[asset]["target"]
             digest = sha256(dist / asset)
             if digest:
