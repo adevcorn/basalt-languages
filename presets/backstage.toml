@@ -1,0 +1,20 @@
+[preset]
+name = "backstage"
+version = "0.1.0"
+description = "Backstage: catalog API index, diagnostics, and agent launcher"
+addon = true
+markers = []
+language_globs = ["**/catalog-info.yaml", "**/catalog-info.yml"]
+require_language_files = false
+
+[[member]]
+name = "backstage-catalog"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "agent-backstage-yarn"
+version = "^0.1"
+required = false
+recommended = true

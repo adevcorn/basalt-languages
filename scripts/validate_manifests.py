@@ -59,7 +59,9 @@ for path in sorted((ROOT / "presets").glob("*.toml")):
         nm = m.get("name")
         if nm not in pack_names and nm not in plugin_names:
             errors.append(f"{path}: unknown member {nm!r}")
-    if not any(m.get("required") and m.get("name") in pack_names for m in members):
+    if not preset.get("addon") and not any(
+        m.get("required") and m.get("name") in pack_names for m in members
+    ):
         errors.append(f"{path}: preset must require at least one language pack")
     if not preset.get("language_globs"):
         errors.append(f"{path}: language_globs must not be empty")

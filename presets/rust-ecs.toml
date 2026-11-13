@@ -1,0 +1,14 @@
+[preset]
+name = "rust-ecs"
+version = "0.1.0"
+description = "Rust ECS inspector add-on for Bevy projects"
+addon = true
+markers = []
+language_globs = ["**/*.rs"]
+require_language_files = true
+
+[[member]]
+name = "rust-ecs-inspector"
+version = "^0.1"
+required = true
+recommended = true

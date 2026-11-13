@@ -284,6 +284,8 @@ def main() -> None:
             if member["name"].startswith("language-"):
                 supersedes.add(member["name"])
         entry["supersedes"] = sorted(supersedes)
+        if preset.get("addon"):
+            entry["addon"] = True
         if preset["name"] in by_name and by_name[preset["name"]] in presets:
             by_name[preset["name"]].update(entry)
         else:

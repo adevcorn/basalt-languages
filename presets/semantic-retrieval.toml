@@ -1,0 +1,14 @@
+[preset]
+name = "semantic-retrieval"
+version = "0.1.0"
+description = "Language-agnostic semantic retrieval add-on"
+addon = true
+markers = []
+language_globs = ["**/*"]
+require_language_files = false
+
+[[member]]
+name = "semantic-retrieval"
+version = "^0.1"
+required = true
+recommended = true
