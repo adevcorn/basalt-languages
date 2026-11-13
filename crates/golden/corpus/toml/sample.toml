@@ -1,0 +1,13 @@
+title = "Golden Corpus"
+
+[owner]
+name = "Basalt"
+active = true
+
+[[items]]
+id = 1
+tags = ["alpha", "beta"]
+
+[[items]]
+id = 2
+tags = ["gamma"]

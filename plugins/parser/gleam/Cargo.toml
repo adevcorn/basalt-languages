@@ -11,3 +11,6 @@ crate-type = ["cdylib"]
 [dependencies]
 tree-sitter = "0.23"
 tree-sitter-gleam = "1.0"
+
+[dependencies.language-core]
+path = "../../../crates/language-core"

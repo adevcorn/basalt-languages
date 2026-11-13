@@ -1,0 +1,327 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 4,
+      "length": 3,
+      "scope": 11
+    },
+    {
+      "offset": 32,
+      "length": 47,
+      "scope": 4
+    },
+    {
+      "offset": 80,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 84,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 91,
+      "length": 9,
+      "scope": 5
+    },
+    {
+      "offset": 114,
+      "length": 7,
+      "scope": 5
+    },
+    {
+      "offset": 122,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 130,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 139,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 144,
+      "length": 9,
+      "scope": 5
+    },
+    {
+      "offset": 160,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 164,
+      "length": 2,
+      "scope": 1
+    },
+    {
+      "offset": 167,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 173,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 176,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 191,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 205,
+      "length": 7,
+      "scope": 11
+    },
+    {
+      "offset": 214,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 233,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 237,
+      "length": 2,
+      "scope": 1
+    },
+    {
+      "offset": 240,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 244,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 245,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 255,
+      "length": 4,
+      "scope": 10
+    },
+    {
+      "offset": 261,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 262,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 267,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 274,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 279,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 282,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 296,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 300,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 319,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 330,
+      "length": 9,
+      "scope": 6
+    },
+    {
+      "offset": 343,
+      "length": 9,
+      "scope": 6
+    },
+    {
+      "offset": 353,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 372,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 390,
+      "length": 7,
+      "scope": 8
+    },
+    {
+      "offset": 397,
+      "length": 1,
+      "scope": 8
+    },
+    {
+      "offset": 399,
+      "length": 17,
+      "scope": 2
+    },
+    {
+      "offset": 443,
+      "length": 2,
+      "scope": 1
+    },
+    {
+      "offset": 446,
+      "length": 4,
+      "scope": 6
+    },
+    {
+      "offset": 459,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 463,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 467,
+      "length": 9,
+      "scope": 10
+    },
+    {
+      "offset": 479,
+      "length": 9,
+      "scope": 11
+    },
+    {
+      "offset": 490,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 511,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 515,
+      "length": 8,
+      "scope": 2
+    },
+    {
+      "offset": 525,
+      "length": 1,
+      "scope": 3
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 80,
+      "length": 57,
+      "label": "type Inventory",
+      "kind": 2,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 139,
+      "length": 302,
+      "label": "extension Inventory",
+      "kind": 4,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 160,
+      "length": 67,
+      "label": "function new",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 233,
+      "length": 206,
+      "label": "function add",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 443,
+      "length": 87,
+      "label": "function main",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": [
+    {
+      "offset": 214,
+      "name": "new"
+    },
+    {
+      "offset": 319,
+      "name": "entry"
+    },
+    {
+      "offset": 330,
+      "name": "to_string"
+    },
+    {
+      "offset": 343,
+      "name": "or_insert"
+    },
+    {
+      "offset": 490,
+      "name": "new"
+    },
+    {
+      "offset": 511,
+      "name": "add"
+    }
+  ]
+}

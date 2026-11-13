@@ -1,0 +1,110 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 8,
+      "length": 15,
+      "scope": 2
+    },
+    {
+      "offset": 25,
+      "length": 39,
+      "scope": 8
+    },
+    {
+      "offset": 26,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 33,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 40,
+      "length": 8,
+      "scope": 2
+    },
+    {
+      "offset": 49,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 58,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 66,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 74,
+      "length": 2,
+      "scope": 5
+    },
+    {
+      "offset": 79,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 81,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 89,
+      "length": 7,
+      "scope": 2
+    },
+    {
+      "offset": 98,
+      "length": 6,
+      "scope": 2
+    },
+    {
+      "offset": 109,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 117,
+      "length": 2,
+      "scope": 5
+    },
+    {
+      "offset": 122,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 124,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 132,
+      "length": 7,
+      "scope": 2
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 25,
+      "length": 39,
+      "label": "module owner",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": []
+}

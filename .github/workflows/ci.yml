@@ -14,7 +14,7 @@ jobs:
       - name: Validate manifests
         run: python3 scripts/validate_manifests.py
       - name: Host tests
-        run: cargo test --workspace
+        run: cargo test --workspace --exclude golden
 
   matrix:
     runs-on: ubuntu-latest
@@ -49,3 +49,17 @@ jobs:
           name: wasm-${{ matrix.package }}
           path: dist/${{ matrix.artifact }}
           if-no-files-found: error
+
+  golden:
+    needs: wasm-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wasm-*
+          path: dist
+          merge-multiple: true
+      - name: Golden corpus
+        run: GOLDEN_DIST="$PWD/dist" cargo test -p golden --test corpus -- --nocapture

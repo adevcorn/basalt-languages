@@ -1,0 +1,157 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 7,
+      "scope": 10
+    },
+    {
+      "offset": 9,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 11,
+      "length": 4,
+      "scope": 10
+    },
+    {
+      "offset": 31,
+      "length": 7,
+      "scope": 10
+    },
+    {
+      "offset": 40,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 45,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 56,
+      "length": 2,
+      "scope": 10
+    },
+    {
+      "offset": 68,
+      "length": 4,
+      "scope": 10
+    },
+    {
+      "offset": 92,
+      "length": 2,
+      "scope": 10
+    },
+    {
+      "offset": 104,
+      "length": 6,
+      "scope": 10
+    },
+    {
+      "offset": 118,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 125,
+      "length": 15,
+      "scope": 2
+    },
+    {
+      "offset": 141,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 148,
+      "length": 24,
+      "scope": 2
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 0,
+      "length": 172,
+      "label": "key block",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 0,
+      "length": 172,
+      "label": "key enabled",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 0,
+      "length": 172,
+      "label": "key items",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 0,
+      "length": 172,
+      "label": "key name",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 0,
+      "length": 172,
+      "label": "key version",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 56,
+      "length": 31,
+      "label": "key id",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 56,
+      "length": 31,
+      "label": "key tags",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 92,
+      "length": 48,
+      "label": "key id",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 92,
+      "length": 48,
+      "label": "key nested",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 118,
+      "length": 22,
+      "label": "key value",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": []
+}

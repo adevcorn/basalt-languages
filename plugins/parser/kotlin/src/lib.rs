@@ -9,6 +9,7 @@
 #![allow(static_mut_refs)]
 
 use tree_sitter::{Language, Parser, Query, QueryCursor};
+use language_core::wire;
 
 const SRC_OFFSET: usize = 0;
 const OUT_OFFSET: usize = 6 * 1024 * 1024;
@@ -147,30 +148,9 @@ fn get_state() -> Option<&'static mut ParserState> {
     }
 }
 
-fn scope_id_for(name: &str) -> u8 {
-    match name {
-        "keyword" => SCOPE_KEYWORD,
-        "string" => SCOPE_STRING,
-        "number" => SCOPE_NUMBER,
-        "comment" => SCOPE_COMMENT,
-        "type" => SCOPE_TYPE,
-        "function" => SCOPE_FUNCTION,
-        "operator" => SCOPE_OPERATOR,
-        "variable" => SCOPE_VARIABLE,
-        _ => 0,
-    }
-}
+fn scope_id_for(name: &str) -> u8 { wire::scope_id_for(name) }
 
-fn kind_byte(kind: &str) -> u8 {
-    match kind {
-        "module" => 1,
-        "type" => 2,
-        "function" => 3,
-        "enum_case" => 6,
-        "property" => 5,
-        _ => 0,
-    }
-}
+fn kind_byte(kind: &str) -> u8 { wire::kind_byte(kind) }
 
 #[no_mangle]
 pub extern "C" fn basalt_lang() -> i32 {
@@ -248,12 +228,7 @@ pub unsafe extern "C" fn basalt_parse(
             let offset = cap.node.start_byte() as u32;
             let length = (cap.node.end_byte() - cap.node.start_byte()) as u32;
             let base = count * 12;
-            out[base..base + 4].copy_from_slice(&offset.to_le_bytes());
-            out[base + 4..base + 8].copy_from_slice(&length.to_le_bytes());
-            out[base + 8] = scope_id;
-            out[base + 9] = 0;
-            out[base + 10] = 0;
-            out[base + 11] = 0;
+            wire::write_span(out, count, offset, length, scope_id);
             count += 1;
         }
     }
@@ -319,13 +294,7 @@ pub unsafe extern "C" fn basalt_retrieval_chunks(
         };
 
         let base = count * 104;
-        out[base..base + 4].copy_from_slice(&off.to_le_bytes());
-        out[base + 4..base + 8].copy_from_slice(&len.to_le_bytes());
-        let label_bytes = label.as_bytes();
-        let label_len = label_bytes.len().min(95);
-        out[base + 8..base + 8 + label_len].copy_from_slice(&label_bytes[..label_len]);
-        out[base + 8 + label_len] = 0;
-        out[base + 103] = kind_byte(k);
+        wire::write_chunk(out, count, off, len, &label, kind_byte(k));
         count += 1;
     }
     count as i32
@@ -367,11 +336,7 @@ pub unsafe extern "C" fn basalt_call_sites(
             }
             let offset = cap.node.start_byte() as u32;
             let base = count * 68;
-            out[base..base + 4].copy_from_slice(&offset.to_le_bytes());
-            let name_bytes = name.as_bytes();
-            let name_len = name_bytes.len().min(63);
-            out[base + 4..base + 4 + name_len].copy_from_slice(&name_bytes[..name_len]);
-            out[base + 4 + name_len] = 0;
+            wire::write_call_site(out, count, offset, name);
             count += 1;
         }
     }

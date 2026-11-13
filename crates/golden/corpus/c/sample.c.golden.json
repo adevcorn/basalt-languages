@@ -1,0 +1,158 @@
+{
+  "spans": [
+    {
+      "offset": 40,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 47,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 59,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 70,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 81,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 88,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 92,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 96,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 103,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 116,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 133,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 137,
+      "length": 4,
+      "scope": 6
+    },
+    {
+      "offset": 142,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 154,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 161,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 178,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 186,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 195,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 205,
+      "length": 3,
+      "scope": 6
+    },
+    {
+      "offset": 224,
+      "length": 6,
+      "scope": 6
+    },
+    {
+      "offset": 231,
+      "length": 10,
+      "scope": 2
+    },
+    {
+      "offset": 253,
+      "length": 6,
+      "scope": 1
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 40,
+      "length": 38,
+      "label": "type point",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 81,
+      "length": 50,
+      "label": "function add",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 133,
+      "length": 133,
+      "label": "function main",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 154,
+      "length": 12,
+      "label": "type point",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": [
+    {
+      "offset": 205,
+      "name": "add"
+    },
+    {
+      "offset": 224,
+      "name": "printf"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 19,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 26,
+      "length": 7,
+      "scope": 5
+    },
+    {
+      "offset": 40,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 44,
+      "length": 4,
+      "scope": 10
+    },
+    {
+      "offset": 50,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 61,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 65,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 72,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 76,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 78,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 85,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 90,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 96,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 103,
+      "length": 3,
+      "scope": 5
+    },
+    {
+      "offset": 107,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 109,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 112,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 115,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 132,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 136,
+      "length": 4,
+      "scope": 10
+    },
+    {
+      "offset": 141,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 143,
+      "length": 2,
+      "scope": 2
+    },
+    {
+      "offset": 154,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 163,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 164,
+      "length": 3,
+      "scope": 7
+    },
+    {
+      "offset": 192,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 195,
+      "length": 17,
+      "scope": 2
+    },
+    {
+      "offset": 231,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 251,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 272,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 276,
+      "length": 7,
+      "scope": 10
+    },
+    {
+      "offset": 284,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 286,
+      "length": 7,
+      "scope": 6
+    },
+    {
+      "offset": 300,
+      "length": 8,
+      "scope": 2
+    },
+    {
+      "offset": 310,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 316,
+      "length": 7,
+      "scope": 11
+    },
+    {
+      "offset": 324,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 337,
+      "length": 1,
+      "scope": 3
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 19,
+      "length": 251,
+      "label": "type Greeter",
+      "kind": 2,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 85,
+      "length": 183,
+      "label": "function String",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 85,
+      "length": 183,
+      "label": "function greet",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": [
+    {
+      "offset": 231,
+      "name": "print"
+    },
+    {
+      "offset": 286,
+      "name": "Greeter"
+    },
+    {
+      "offset": 310,
+      "name": "print"
+    },
+    {
+      "offset": 324,
+      "name": "greet"
+    }
+  ]
+}

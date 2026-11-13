@@ -1,0 +1,49 @@
+[[language]]
+name = "kotlin"
+artifact = "kt.wasm"
+fixtures = ["add_helper_view_model.kt"]
+
+[[language]]
+name = "gleam"
+artifact = "gleam.wasm"
+fixtures = ["calendar_sample.gleam"]
+
+[[language]]
+name = "csharp"
+artifact = "cs.wasm"
+fixtures = ["Sample.cs"]
+
+[[language]]
+name = "typescript"
+artifact = "ts.wasm"
+fixtures = [{ path = "sample.tsx", dialect = "tsx" }]
+
+[[language]]
+name = "yaml"
+artifact = "yaml.wasm"
+fixtures = ["sample.yaml"]
+
+[[language]]
+name = "rust"
+artifact = "rs.wasm"
+fixtures = ["sample.rs"]
+
+[[language]]
+name = "swift"
+artifact = "swift.wasm"
+fixtures = ["Sample.swift"]
+
+[[language]]
+name = "c"
+artifact = "c.wasm"
+fixtures = ["sample.c"]
+
+[[language]]
+name = "markdown"
+artifact = "md.wasm"
+fixtures = ["sample.md"]
+
+[[language]]
+name = "toml"
+artifact = "toml.wasm"
+fixtures = ["sample.toml"]

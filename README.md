@@ -56,10 +56,27 @@ Validate the pack/preset/artifact manifests:
 python3 scripts/validate_manifests.py
 ```
 
+Golden corpus (requires built artifacts):
+
+```bash
+./scripts/build-wasm.sh
+GOLDEN_DIST="$PWD/dist" cargo test -p golden --test corpus
+```
+
+Regenerate snapshots after an intentional change:
+
+```bash
+GOLDEN_UPDATE=1 GOLDEN_DIST="$PWD/dist" cargo test -p golden --test corpus
+```
+
+`crates/golden` loads the real `dist/*.wasm` artifacts in wasmtime and compares
+scope spans, retrieval chunks (including v2 flags), and call sites for all ten
+languages. CI runs it after the wasm build matrix.
+
 Host tests:
 
 ```bash
-cargo test --workspace
+cargo test --workspace --exclude golden
 ```
 
 ## CI

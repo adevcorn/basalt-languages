@@ -1,0 +1,224 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 20,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 25,
+      "length": 7,
+      "scope": 2
+    },
+    {
+      "offset": 35,
+      "length": 9,
+      "scope": 1
+    },
+    {
+      "offset": 45,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 61,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 76,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 79,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 90,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 97,
+      "length": 8,
+      "scope": 1
+    },
+    {
+      "offset": 106,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 126,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 128,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 133,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 144,
+      "length": 5,
+      "scope": 1
+    },
+    {
+      "offset": 168,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 189,
+      "length": 5,
+      "scope": 1
+    },
+    {
+      "offset": 195,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 201,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 203,
+      "length": 15,
+      "scope": 2
+    },
+    {
+      "offset": 223,
+      "length": 8,
+      "scope": 1
+    },
+    {
+      "offset": 232,
+      "length": 4,
+      "scope": 6
+    },
+    {
+      "offset": 260,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 262,
+      "length": 1,
+      "scope": 3
+    },
+    {
+      "offset": 273,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 286,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 287,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 301,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 314,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 322,
+      "length": 1,
+      "scope": 7
+    },
+    {
+      "offset": 353,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 359,
+      "length": 1,
+      "scope": 7
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 35,
+      "length": 53,
+      "label": "interface Props",
+      "kind": 7,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 90,
+      "length": 277,
+      "label": "function Hello",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 97,
+      "length": 270,
+      "label": "function Hello",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 144,
+      "length": 42,
+      "label": "property [value, setValue]",
+      "kind": 5,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 189,
+      "length": 30,
+      "label": "property label",
+      "kind": 5,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 223,
+      "length": 46,
+      "label": "function bump",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": [
+    {
+      "offset": 170,
+      "name": "useState"
+    },
+    {
+      "offset": 245,
+      "name": "setValue"
+    }
+  ]
+}

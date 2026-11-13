@@ -2,6 +2,7 @@
 resolver = "2"
 members = [
     "crates/language-core",
+    "crates/golden",
     "crates/testkit",
     "plugins/parser/csharp",
     "plugins/parser/kotlin",

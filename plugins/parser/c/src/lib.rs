@@ -4,6 +4,7 @@
 // to obtain the linear-memory addresses to write/read.
 
 use tree_sitter::{Language, Parser, Query, QueryCursor};
+use language_core::wire;
 
 const SRC_OFFSET: usize = 0;
 const OUT_OFFSET: usize = 6 * 1024 * 1024;
@@ -124,24 +125,10 @@ pub unsafe extern "C" fn basalt_parse(
     for m in matches {
         for cap in m.captures {
             if count >= max_spans as usize { break; }
-            let scope_id = match state.parse_cap_names[cap.index as usize].as_str() {
-                "keyword"  => SCOPE_KEYWORD,
-                "string"   => SCOPE_STRING,
-                "number"   => SCOPE_NUMBER,
-                "comment"  => SCOPE_COMMENT,
-                "type"     => SCOPE_TYPE,
-                "function" => SCOPE_FUNCTION,
-                "operator" => SCOPE_OPERATOR,
-                "macro"    => SCOPE_MACRO,
-                _ => 0,
-            };
+            let scope_id = wire::scope_id_for(&state.parse_cap_names[cap.index as usize]);
             let offset = cap.node.start_byte() as u32;
             let length = (cap.node.end_byte() - cap.node.start_byte()) as u32;
-            let base = count * 12;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            out[base+4..base+8].copy_from_slice(&length.to_le_bytes());
-            out[base+8] = scope_id;
-            out[base+9] = 0; out[base+10] = 0; out[base+11] = 0;
+            wire::write_span(out, count, offset, length, scope_id);
             count += 1;
         }
     }
@@ -189,13 +176,7 @@ pub unsafe extern "C" fn basalt_retrieval_chunks(
         let label = if let Some(n) = name {
             let mut s = k.to_string(); s.push(' '); s.push_str(n); s
         } else { k.to_string() };
-        let base = count * 104;
-        out[base..base+4].copy_from_slice(&off.to_le_bytes());
-        out[base+4..base+8].copy_from_slice(&len.to_le_bytes());
-        let lbytes = label.as_bytes();
-        let llen = lbytes.len().min(95);
-        out[base+8..base+8+llen].copy_from_slice(&lbytes[..llen]);
-        out[base+8+llen] = 0;
+        wire::write_chunk(out, count, off, len, &label, 0);
         count += 1;
     }
     count as i32
@@ -229,12 +210,7 @@ pub unsafe extern "C" fn basalt_call_sites(
             let name = name.trim();
             if name.is_empty() { continue; }
             let offset = cap.node.start_byte() as u32;
-            let base = count * 68;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            let nb = name.as_bytes();
-            let nlen = nb.len().min(63);
-            out[base+4..base+4+nlen].copy_from_slice(&nb[..nlen]);
-            out[base+4+nlen] = 0;
+            wire::write_call_site(out, count, offset, name);
             count += 1;
         }
     }

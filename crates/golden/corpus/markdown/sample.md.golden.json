@@ -1,0 +1,38 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 16,
+      "scope": 1
+    },
+    {
+      "offset": 71,
+      "length": 9,
+      "scope": 1
+    },
+    {
+      "offset": 126,
+      "length": 46,
+      "scope": 2
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 0,
+      "length": 16,
+      "label": "module Golden Corpus",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 71,
+      "length": 9,
+      "label": "module Usage",
+      "kind": 0,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": []
+}

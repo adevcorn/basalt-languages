@@ -1,0 +1,12 @@
+version: 1
+name: golden-corpus
+enabled: true
+items:
+  - id: one
+    tags: [alpha, beta]
+  - id: two
+    nested:
+      value: "quoted string"
+block: |
+  line one
+  line two

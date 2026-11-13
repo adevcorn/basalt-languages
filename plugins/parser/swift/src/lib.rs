@@ -4,6 +4,7 @@
 // to obtain the linear-memory addresses to write/read.
 
 use tree_sitter::{Language, Parser, Query, QueryCursor};
+use language_core::wire;
 
 const SRC_OFFSET: usize = 0;
 const OUT_OFFSET: usize = 6 * 1024 * 1024;
@@ -185,11 +186,7 @@ pub unsafe extern "C" fn basalt_parse(
             };
             let offset = cap.node.start_byte() as u32;
             let length = (cap.node.end_byte() - cap.node.start_byte()) as u32;
-            let base = count * 12;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            out[base+4..base+8].copy_from_slice(&length.to_le_bytes());
-            out[base+8] = scope_id;
-            out[base+9] = 0; out[base+10] = 0; out[base+11] = 0;
+            wire::write_span(out, count, offset, length, scope_id);
             count += 1;
         }
     }
@@ -198,18 +195,7 @@ pub unsafe extern "C" fn basalt_parse(
 
 /// Map the tree-sitter capture kind string to the Basalt semantic node kind byte.
 /// These values must match the `SEMANTIC_NODE_*` constants in `core/src/semantic_layer.rs`.
-fn kind_byte(k: &str) -> u8 {
-    match k {
-        "module"    => 1,
-        "type"      => 2,
-        "function"  => 3,
-        "extension" => 4,
-        "property"  => 5,
-        "enum_case" => 6,
-        "interface" => 7,
-        _           => 0,
-    }
-}
+fn kind_byte(k: &str) -> u8 { wire::kind_byte(k) }
 
 #[no_mangle]
 pub unsafe extern "C" fn basalt_retrieval_chunks(
@@ -252,15 +238,7 @@ pub unsafe extern "C" fn basalt_retrieval_chunks(
         let label = if let Some(n) = name {
             let mut s = k.to_string(); s.push(' '); s.push_str(n); s
         } else { k.to_string() };
-        let base = count * 104;
-        out[base..base+4].copy_from_slice(&off.to_le_bytes());
-        out[base+4..base+8].copy_from_slice(&len.to_le_bytes());
-        let lbytes = label.as_bytes();
-        let llen = lbytes.len().min(95);
-        out[base+8..base+8+llen].copy_from_slice(&lbytes[..llen]);
-        out[base+8+llen] = 0;
-        // Byte 103 = kind u8 (0 = unset/infer from label; non-zero = explicit kind)
-        out[base+103] = kind_byte(k);
+        wire::write_chunk(out, count, off, len, &label, kind_byte(k));
         count += 1;
     }
     count as i32
@@ -294,12 +272,7 @@ pub unsafe extern "C" fn basalt_call_sites(
             let name = name.trim();
             if name.is_empty() { continue; }
             let offset = cap.node.start_byte() as u32;
-            let base = count * 68;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            let nb = name.as_bytes();
-            let nlen = nb.len().min(63);
-            out[base+4..base+4+nlen].copy_from_slice(&nb[..nlen]);
-            out[base+4+nlen] = 0;
+            wire::write_call_site(out, count, offset, name);
             count += 1;
         }
     }

@@ -1,0 +1,350 @@
+{
+  "spans": [
+    {
+      "offset": 0,
+      "length": 73,
+      "scope": 4
+    },
+    {
+      "offset": 74,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 102,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 119,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 137,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 163,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 168,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 184,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 188,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 193,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 211,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 219,
+      "length": 8,
+      "scope": 5
+    },
+    {
+      "offset": 230,
+      "length": 8,
+      "scope": 5
+    },
+    {
+      "offset": 242,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 246,
+      "length": 6,
+      "scope": 1
+    },
+    {
+      "offset": 253,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 258,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 276,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 298,
+      "length": 4,
+      "scope": 5
+    },
+    {
+      "offset": 303,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 322,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 326,
+      "length": 2,
+      "scope": 1
+    },
+    {
+      "offset": 329,
+      "length": 11,
+      "scope": 6
+    },
+    {
+      "offset": 341,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 348,
+      "length": 6,
+      "scope": 5
+    },
+    {
+      "offset": 359,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 377,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 400,
+      "length": 2,
+      "scope": 7
+    },
+    {
+      "offset": 410,
+      "length": 9,
+      "scope": 6
+    },
+    {
+      "offset": 422,
+      "length": 4,
+      "scope": 1
+    },
+    {
+      "offset": 444,
+      "length": 7,
+      "scope": 2
+    },
+    {
+      "offset": 455,
+      "length": 5,
+      "scope": 5
+    },
+    {
+      "offset": 470,
+      "length": 8,
+      "scope": 5
+    },
+    {
+      "offset": 486,
+      "length": 2,
+      "scope": 1
+    },
+    {
+      "offset": 489,
+      "length": 9,
+      "scope": 6
+    },
+    {
+      "offset": 499,
+      "length": 5,
+      "scope": 10
+    },
+    {
+      "offset": 506,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 524,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 542,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 588,
+      "length": 4,
+      "scope": 6
+    },
+    {
+      "offset": 599,
+      "length": 5,
+      "scope": 6
+    },
+    {
+      "offset": 614,
+      "length": 3,
+      "scope": 1
+    },
+    {
+      "offset": 618,
+      "length": 5,
+      "scope": 1
+    },
+    {
+      "offset": 624,
+      "length": 13,
+      "scope": 10
+    },
+    {
+      "offset": 639,
+      "length": 13,
+      "scope": 5
+    },
+    {
+      "offset": 655,
+      "length": 5,
+      "scope": 5
+    }
+  ],
+  "retrieval": [
+    {
+      "offset": 74,
+      "length": 27,
+      "label": "module gleam/dynamic/decode",
+      "kind": 1,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 102,
+      "length": 16,
+      "label": "module gleam/int",
+      "kind": 1,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 119,
+      "length": 17,
+      "label": "module gleam/list",
+      "kind": 1,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 137,
+      "length": 45,
+      "label": "module add_helper/models",
+      "kind": 1,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 184,
+      "length": 56,
+      "label": "type CalendarQuery",
+      "kind": 2,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 211,
+      "length": 5,
+      "label": "enum_case Today",
+      "kind": 6,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 219,
+      "length": 8,
+      "label": "enum_case Tomorrow",
+      "kind": 6,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 230,
+      "length": 8,
+      "label": "enum_case ThisWeek",
+      "kind": 6,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 242,
+      "length": 78,
+      "label": "type CalendarState",
+      "kind": 2,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 276,
+      "length": 42,
+      "label": "enum_case CalendarState",
+      "kind": 6,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 322,
+      "length": 162,
+      "label": "function parse_query",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 486,
+      "length": 126,
+      "label": "function normalize",
+      "kind": 3,
+      "visibility": 0,
+      "is_test": false
+    },
+    {
+      "offset": 614,
+      "length": 46,
+      "label": "property default_query",
+      "kind": 5,
+      "visibility": 0,
+      "is_test": false
+    }
+  ],
+  "call_sites": [
+    {
+      "offset": 410,
+      "name": "lowercase"
+    },
+    {
+      "offset": 588,
+      "name": "trim"
+    }
+  ]
+}

@@ -10,3 +10,6 @@ crate-type = ["cdylib"]
 [dependencies]
 # serde feature required: without it serialize_facts is a stub returning empty.
 basalt-plugin-sdk = { workspace = true, features = ["serde"] }
+
+[dependencies.language-core]
+path = "../../../crates/language-core"

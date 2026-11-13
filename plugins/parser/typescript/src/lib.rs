@@ -1,6 +1,7 @@
 // basalt-plugin-parser-typescript/src/lib.rs — tree-sitter TypeScript/TSX parser WASM plugin for Basalt
 
 use tree_sitter::{Language, Parser, Query, QueryCursor};
+use language_core::wire;
 
 const SRC_OFFSET: usize = 0;
 const OUT_OFFSET: usize = 6 * 1024 * 1024;
@@ -239,32 +240,9 @@ unsafe fn get_state_tsx() -> Option<&'static mut TsxParserState> {
 
 // ── helpers ─────────────────────────────────────────────────────────────────
 
-fn scope_id_for(name: &str) -> u8 {
-    match name {
-        "keyword"   => SCOPE_KEYWORD,
-        "string"    => SCOPE_STRING,
-        "number"    => SCOPE_NUMBER,
-        "comment"   => SCOPE_COMMENT,
-        "type"      => SCOPE_TYPE,
-        "function"  => SCOPE_FUNCTION,
-        "operator"  => SCOPE_OPERATOR,
-        "variable"  => SCOPE_VARIABLE,
-        "namespace" => SCOPE_NAMESPACE,
-        _           => 0,
-    }
-}
+fn scope_id_for(name: &str) -> u8 { wire::scope_id_for(name) }
 
-fn kind_byte(k: &str) -> u8 {
-    match k {
-        "module"    => 1, // SEMANTIC_NODE_MODULE
-        "type"      => 2, // SEMANTIC_NODE_TYPE
-        "function"  => 3, // SEMANTIC_NODE_FUNCTION
-        "property"  => 5, // SEMANTIC_NODE_PROPERTY
-        "enum"      => 6, // SEMANTIC_NODE_ENUM_CASE (repurposed for enum decl)
-        "interface" => 7, // SEMANTIC_NODE_INTERFACE
-        _           => 0,
-    }
-}
+fn kind_byte(k: &str) -> u8 { wire::kind_byte(k) }
 
 // ── exports ──────────────────────────────────────────────────────────────────
 
@@ -347,11 +325,7 @@ pub unsafe extern "C" fn basalt_parse(
             let scope_id = scope_id_for(&state.parse_cap_names[cap.index as usize]);
             let offset = cap.node.start_byte() as u32;
             let length = (cap.node.end_byte() - cap.node.start_byte()) as u32;
-            let base = count * 12;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            out[base+4..base+8].copy_from_slice(&length.to_le_bytes());
-            out[base+8] = scope_id;
-            out[base+9] = 0; out[base+10] = 0; out[base+11] = 0;
+            wire::write_span(out, count, offset, length, scope_id);
             count += 1;
         }
     }
@@ -378,11 +352,7 @@ pub unsafe extern "C" fn basalt_parse_tsx(
             let scope_id = scope_id_for(&state.parse_cap_names[cap.index as usize]);
             let offset = cap.node.start_byte() as u32;
             let length = (cap.node.end_byte() - cap.node.start_byte()) as u32;
-            let base = count * 12;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            out[base+4..base+8].copy_from_slice(&length.to_le_bytes());
-            out[base+8] = scope_id;
-            out[base+9] = 0; out[base+10] = 0; out[base+11] = 0;
+            wire::write_span(out, count, offset, length, scope_id);
             count += 1;
         }
     }
@@ -423,14 +393,7 @@ pub unsafe extern "C" fn basalt_retrieval_chunks(
         let label = if let Some(n) = name {
             let mut s = k.to_string(); s.push(' '); s.push_str(n); s
         } else { k.to_string() };
-        let base = count * 104;
-        out[base..base+4].copy_from_slice(&off.to_le_bytes());
-        out[base+4..base+8].copy_from_slice(&len.to_le_bytes());
-        let lbytes = label.as_bytes();
-        let llen = lbytes.len().min(95);
-        out[base+8..base+8+llen].copy_from_slice(&lbytes[..llen]);
-        out[base+8+llen] = 0;
-        out[base+103] = kind_byte(k);
+        wire::write_chunk(out, count, off, len, &label, kind_byte(k));
         count += 1;
     }
     count as i32
@@ -470,14 +433,7 @@ pub unsafe extern "C" fn basalt_retrieval_chunks_tsx(
         let label = if let Some(n) = name {
             let mut s = k.to_string(); s.push(' '); s.push_str(n); s
         } else { k.to_string() };
-        let base = count * 104;
-        out[base..base+4].copy_from_slice(&off.to_le_bytes());
-        out[base+4..base+8].copy_from_slice(&len.to_le_bytes());
-        let lbytes = label.as_bytes();
-        let llen = lbytes.len().min(95);
-        out[base+8..base+8+llen].copy_from_slice(&lbytes[..llen]);
-        out[base+8+llen] = 0;
-        out[base+103] = kind_byte(k);
+        wire::write_chunk(out, count, off, len, &label, kind_byte(k));
         count += 1;
     }
     count as i32
@@ -504,12 +460,7 @@ pub unsafe extern "C" fn basalt_call_sites(
             let name = name.trim();
             if name.is_empty() { continue; }
             let offset = cap.node.start_byte() as u32;
-            let base = count * 68;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            let nb = name.as_bytes();
-            let nlen = nb.len().min(63);
-            out[base+4..base+4+nlen].copy_from_slice(&nb[..nlen]);
-            out[base+4+nlen] = 0;
+            wire::write_call_site(out, count, offset, name);
             count += 1;
         }
     }
@@ -583,12 +534,7 @@ pub unsafe extern "C" fn basalt_call_sites_tsx(
             let name = name.trim();
             if name.is_empty() { continue; }
             let offset = cap.node.start_byte() as u32;
-            let base = count * 68;
-            out[base..base+4].copy_from_slice(&offset.to_le_bytes());
-            let nb = name.as_bytes();
-            let nlen = nb.len().min(63);
-            out[base+4..base+4+nlen].copy_from_slice(&nb[..nlen]);
-            out[base+4+nlen] = 0;
+            wire::write_call_site(out, count, offset, name);
             count += 1;
         }
     }

@@ -127,63 +127,15 @@ fn invoke_parse_retrieval(src: &[u8]) -> Result<Vec<u8>, i64> {
 // ── Parser response decoding ────────────────────────────────────────────────
 
 fn decode_call_sites(data: &[u8]) -> Vec<(u32, &str)> {
-    if data.len() < 4 {
-        return Vec::new();
-    }
-    let count = u32::from_le_bytes([data[0], data[1], data[2], data[3]]) as usize;
-    let mut sites = Vec::with_capacity(count);
-    let mut pos = 4;
-    for _ in 0..count {
-        if pos + 68 > data.len() {
-            break;
-        }
-        let offset = u32::from_le_bytes([data[pos], data[pos + 1], data[pos + 2], data[pos + 3]]);
-        let name_bytes = &data[pos + 4..pos + 68];
-        let nul = name_bytes.iter().position(|&b| b == 0).unwrap_or(64);
-        if let Ok(name) = core::str::from_utf8(&name_bytes[..nul]) {
-            if !name.is_empty() {
-                sites.push((offset, name));
-            }
-        }
-        pos += 68;
-    }
-    sites
+    language_core::facts_wire::decode_call_sites(data)
 }
 
 fn decode_retrieval(data: &[u8]) -> Vec<(u32, u32, &str, u8)> {
-    if data.len() < 4 {
-        return Vec::new();
-    }
-    let count = u32::from_le_bytes([data[0], data[1], data[2], data[3]]) as usize;
-    let mut chunks = Vec::with_capacity(count);
-    let mut pos = 4;
-    for _ in 0..count {
-        if pos + 104 > data.len() {
-            break;
-        }
-        let offset = u32::from_le_bytes([data[pos], data[pos + 1], data[pos + 2], data[pos + 3]]);
-        let length =
-            u32::from_le_bytes([data[pos + 4], data[pos + 5], data[pos + 6], data[pos + 7]]);
-        let label_bytes = &data[pos + 8..pos + 103];
-        let kind = data[pos + 103];
-        let nul = label_bytes.iter().position(|&b| b == 0).unwrap_or(95);
-        if let Ok(label) = core::str::from_utf8(&label_bytes[..nul]) {
-            let label = label.trim();
-            if !label.is_empty() && length > 0 {
-                chunks.push((offset, length, label, kind));
-            }
-        }
-        pos += 104;
-    }
-    chunks
+    language_core::facts_wire::decode_retrieval(data)
 }
 
 fn label_name<'a>(label: &'a str, kind: &str) -> &'a str {
-    label
-        .strip_prefix(kind)
-        .map(str::trim)
-        .unwrap_or(label)
-        .trim()
+    language_core::facts_wire::label_name(label, kind)
 }
 
 /// Enclosing type scopes for a byte offset, outermost first.
