@@ -72,9 +72,11 @@ cargo test --workspace
 ## Registry
 
 `scripts/generate_registry.py` produces registry entries for the language packs,
-presets, and providers. It points artifact URLs at the monorepo release `--tag`
-and includes SHA-256 checksums from `--dist` (download the actual release assets,
-not the local build, because CI builds are not byte-identical to local builds):
+presets, and providers. Packs and presets are emitted into separate top-level
+`packs`/`presets` arrays so older clients ignore them. It points artifact URLs at
+the monorepo release `--tag` and includes SHA-256 checksums from `--dist`
+(download the actual release assets, not the local build, because CI builds are
+not byte-identical to local builds):
 
 ```bash
 gh release download v0.1.0 --repo adevcorn/basalt-languages -D /tmp/relassets

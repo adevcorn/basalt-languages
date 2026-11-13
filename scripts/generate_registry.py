@@ -73,6 +73,34 @@ PROVIDER_ALIASES = {
     "swift-lsp": ["lsp-swift"],
 }
 
+# Logical preset member -> legacy registry entry name.
+MEMBER_LEGACY = {
+    "project-model-dotnet": "dotnet-project-model",
+    "project-model-gradle-android": "gradle-android-project-model",
+    "project-model-gleam": "gleam-project-model",
+    "project-model-yarn-workspaces": "project-model-yarn-workspaces",
+    "project-model-cargo": "cargo-project-model",
+    "project-model-swift": "swift-project-model",
+    "api-index-dotnet": "dotnet-api-index",
+    "review-actions-rust": "rust-review-actions",
+    "lsp-gleam": "lsp-gleam",
+    "lsp-rust-analyzer": "lsp-rust-analyzer",
+    "lsp-swift": "swift-lsp",
+}
+
+PACK_LEGACY = {
+    "language-csharp": ["parser-csharp", "semantic-facts-csharp"],
+    "language-kotlin": ["parser-kotlin", "semantic-facts-kotlin"],
+    "language-gleam": ["parser-gleam", "semantic-facts-gleam"],
+    "language-typescript": ["parser-typescript", "semantic-facts-typescript"],
+    "language-yaml": ["parser-yaml"],
+    "language-rust": ["parser-rust", "semantic-facts-rust"],
+    "language-swift": ["parser-swift"],
+    "language-c": ["parser-c"],
+    "language-markdown": ["parser-markdown"],
+    "language-toml": ["parser-toml"],
+}
+
 
 def load(path: Path):
     return tomllib.loads(path.read_text())
@@ -111,10 +139,22 @@ def main() -> None:
     versions = package_versions()
     dist = args.dist
 
-    existing = []
+    plugins: list[dict] = []
+    packs: list[dict] = []
+    presets: list[dict] = []
     if args.merge:
-        existing = json.loads(args.merge.read_text()).get("plugins", [])
-    by_name = {p["name"]: p for p in existing}
+        source = json.loads(args.merge.read_text())
+        for entry in source.get("plugins", []):
+            kind = entry.get("kind")
+            if kind == "language-pack":
+                packs.append(entry)
+            elif kind == "preset":
+                presets.append(entry)
+            else:
+                plugins.append(entry)
+        packs.extend(source.get("packs", []))
+        presets.extend(source.get("presets", []))
+    by_name = {p["name"]: p for p in plugins + packs + presets}
 
     # 1. Update provider/parser/facts entries to point at the monorepo release.
     for name, asset in PROVIDER_ASSETS.items():
@@ -132,7 +172,7 @@ def main() -> None:
                 "hook_flags": 0,
                 "file_globs": [],
             }
-            existing.append(entry)
+            plugins.append(entry)
             by_name[name] = entry
         entry["download_url"] = f"{base_url}/{asset}"
         entry["kind"] = "provider"
@@ -186,10 +226,11 @@ def main() -> None:
             "file_globs": pack.get("file_globs", []),
             "artifacts": entries,
         }
-        if pack["name"] in by_name:
+        entry["supersedes"] = PACK_LEGACY.get(pack["name"], [])
+        if pack["name"] in by_name and by_name[pack["name"]] in packs:
             by_name[pack["name"]].update(entry)
         else:
-            existing.append(entry)
+            packs.append(entry)
             by_name[pack["name"]] = entry
 
     # 3. Presets.
@@ -223,23 +264,31 @@ def main() -> None:
             "require_language_files": preset.get("require_language_files", True),
             "members": members,
         }
-        if preset["name"] in by_name:
+        supersedes = set()
+        for member in members:
+            legacy = MEMBER_LEGACY.get(member["name"])
+            if legacy:
+                supersedes.add(legacy)
+            if member["name"].startswith("language-"):
+                supersedes.add(member["name"])
+        entry["supersedes"] = sorted(supersedes)
+        if preset["name"] in by_name and by_name[preset["name"]] in presets:
             by_name[preset["name"]].update(entry)
         else:
-            existing.append(entry)
+            presets.append(entry)
             by_name[preset["name"]] = entry
 
     payload = {
         "version": "1",
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "plugins": existing,
+        "plugins": plugins,
+        "packs": packs,
+        "presets": presets,
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2) + "\n")
     print(
-        f"wrote {args.out}: {len(existing)} entries "
-        f"({sum(1 for p in existing if p.get('kind') == 'language-pack')} packs, "
-        f"{sum(1 for p in existing if p.get('kind') == 'preset')} presets)"
+        f"wrote {args.out}: {len(plugins)} plugins, {len(packs)} packs, {len(presets)} presets"
     )
 
 
