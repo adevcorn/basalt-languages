@@ -1,0 +1,12 @@
+[pack]
+name = "language-yaml"
+version = "0.1.0"
+language = "yaml"
+capabilities = ["language@yaml/v1"]
+file_globs = ["**/*.yaml", "**/*.yml"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-yaml"
+artifact = "yaml.wasm"
+parser_filename = "yaml"

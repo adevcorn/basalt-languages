@@ -1,0 +1,13 @@
+[preset]
+name = "markdown"
+version = "0.1.0"
+description = "Markdown language support"
+markers = []
+language_globs = ["**/*.md"]
+require_language_files = true
+
+[[member]]
+name = "language-markdown"
+version = "^0.1"
+required = true
+recommended = true

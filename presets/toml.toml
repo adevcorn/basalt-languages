@@ -1,0 +1,13 @@
+[preset]
+name = "toml"
+version = "0.1.0"
+description = "TOML language support"
+markers = []
+language_globs = ["**/*.toml"]
+require_language_files = true
+
+[[member]]
+name = "language-toml"
+version = "^0.1"
+required = true
+recommended = true

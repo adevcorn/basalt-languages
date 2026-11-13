@@ -1,0 +1,11 @@
+[package]
+name = "gleam-project-model"
+version = "0.1.2"
+edition = "2021"
+description = "Gleam package project model, build system, and test runner provider for Basalt"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+basalt-plugin-sdk = { workspace = true }

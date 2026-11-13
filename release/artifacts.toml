@@ -1,0 +1,233 @@
+# Complete artifact build list. Phase 2 validators cross-check this with packs/.
+# artifact = output filename; package = cargo package; source = original repo.
+
+[[artifact]]
+package = "basalt-plugin-parser-csharp"
+artifact = "cs.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-csharp"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-kotlin"
+artifact = "kt.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-kotlin"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-gleam"
+artifact = "gleam.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-gleam"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-typescript"
+artifact = "ts.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-typescript"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-yaml"
+artifact = "yaml.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-yaml"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-rust"
+artifact = "rs.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-rust"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-swift"
+artifact = "swift.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-swift"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-c"
+artifact = "c.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-c"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-markdown"
+artifact = "md.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-markdown"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-parser-toml"
+artifact = "toml.wasm"
+kind = "parser"
+source_repo = "basalt-plugin-parser-toml"
+target = "wasm32-wasip1"
+
+[[artifact]]
+package = "basalt-plugin-semantic-facts-csharp"
+artifact = "semantic_facts_csharp.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-facts-csharp"
+target = "wasm32-unknown-unknown"
+plugin_name = "semantic-facts-csharp"
+
+[[artifact]]
+package = "basalt-plugin-semantic-facts-kotlin"
+artifact = "semantic_facts_kotlin.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-facts-kotlin"
+target = "wasm32-unknown-unknown"
+plugin_name = "semantic-facts-kotlin"
+
+[[artifact]]
+package = "basalt-plugin-semantic-facts-gleam"
+artifact = "semantic_facts_gleam.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-facts-gleam"
+target = "wasm32-unknown-unknown"
+plugin_name = "semantic-facts-gleam"
+
+[[artifact]]
+package = "basalt-plugin-semantic-facts-typescript"
+artifact = "semantic_facts_typescript.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-facts-typescript"
+target = "wasm32-unknown-unknown"
+plugin_name = "semantic-facts-typescript"
+
+[[artifact]]
+package = "basalt-plugin-semantic-facts-rust"
+artifact = "semantic_facts_rust.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-facts-rust"
+target = "wasm32-unknown-unknown"
+plugin_name = "semantic-facts-rust"
+
+[[artifact]]
+package = "dotnet-project-model"
+artifact = "dotnet_project_model.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-dotnet-project-model"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-dotnet"
+
+[[artifact]]
+package = "gradle-android-project-model"
+artifact = "gradle_android_project_model.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-gradle-android-project-model"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-gradle-android"
+
+[[artifact]]
+package = "gleam-project-model"
+artifact = "gleam_project_model.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-gleam-project-model"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-gleam"
+
+[[artifact]]
+package = "plugin-project-model-yarn-workspaces"
+artifact = "project_model_yarn_workspaces.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-project-model-yarn-workspaces"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-yarn-workspaces"
+
+[[artifact]]
+package = "cargo-project-model"
+artifact = "cargo_project_model.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-cargo-project-model"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-cargo"
+
+[[artifact]]
+package = "swift-project-model"
+artifact = "swift_project_model.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-swift-project-model"
+target = "wasm32-unknown-unknown"
+plugin_name = "project-model-swift"
+
+[[artifact]]
+package = "dotnet-api-index"
+artifact = "dotnet_api_index.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-dotnet-api-index"
+target = "wasm32-unknown-unknown"
+plugin_name = "api-index-dotnet"
+
+[[artifact]]
+package = "rust-review-actions"
+artifact = "rust_review_actions.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-rust-review-actions"
+target = "wasm32-unknown-unknown"
+plugin_name = "review-actions-rust"
+
+[[artifact]]
+package = "lsp-gleam"
+artifact = "lsp_gleam.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-lsp-gleam"
+target = "wasm32-unknown-unknown"
+plugin_name = "lsp-gleam"
+
+[[artifact]]
+package = "lsp-rust-analyzer"
+artifact = "lsp_rust_analyzer.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-lsp-rust-analyzer"
+target = "wasm32-unknown-unknown"
+plugin_name = "lsp-rust-analyzer"
+
+[[artifact]]
+package = "swift-lsp"
+artifact = "swift_lsp.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-swift-lsp"
+target = "wasm32-unknown-unknown"
+plugin_name = "lsp-swift"
+
+[[artifact]]
+package = "plugin-backstage-catalog"
+artifact = "backstage_catalog.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-backstage-catalog"
+target = "wasm32-unknown-unknown"
+plugin_name = "backstage-catalog"
+
+[[artifact]]
+package = "plugin-agent-backstage-yarn"
+artifact = "agent_backstage_yarn.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-agent-backstage-yarn"
+target = "wasm32-unknown-unknown"
+plugin_name = "agent-backstage-yarn"
+
+[[artifact]]
+package = "basalt-plugin-rust-ecs"
+artifact = "rust_ecs.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-inspector-rust-ecs"
+target = "wasm32-unknown-unknown"
+plugin_name = "rust-ecs-inspector"
+
+[[artifact]]
+package = "semantic-retrieval"
+artifact = "semantic_retrieval.wasm"
+kind = "plugin"
+source_repo = "basalt-plugin-semantic-retrieval"
+plugin_name = "semantic-retrieval"
+
+target = "wasm32-unknown-unknown"

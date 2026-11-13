@@ -1,0 +1,13 @@
+[preset]
+name = "yaml"
+version = "0.1.0"
+description = "YAML language support"
+markers = []
+language_globs = ["**/*.yaml", "**/*.yml"]
+require_language_files = true
+
+[[member]]
+name = "language-yaml"
+version = "^0.1"
+required = true
+recommended = true

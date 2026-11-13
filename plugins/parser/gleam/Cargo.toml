@@ -1,0 +1,13 @@
+[package]
+name = "basalt-plugin-parser-gleam"
+version = "0.1.0"
+edition = "2021"
+description = "Tree-sitter Gleam parser plugin for Basalt"
+license = "Apache-2.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+tree-sitter = "0.23"
+tree-sitter-gleam = "1.0"

@@ -1,0 +1,25 @@
+[preset]
+name = "gleam"
+version = "0.1.0"
+description = "Gleam: language support, project model, and language server"
+markers = ["**/gleam.toml", "**/manifest.toml"]
+language_globs = ["**/*.gleam"]
+require_language_files = true
+
+[[member]]
+name = "language-gleam"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-gleam"
+version = "^0.1"
+required = false
+recommended = true
+
+[[member]]
+name = "lsp-gleam"
+version = "^0.1"
+required = false
+recommended = true

@@ -1,0 +1,12 @@
+[pack]
+name = "language-swift"
+version = "0.1.0"
+language = "swift"
+capabilities = ["language@swift/v1"]
+file_globs = ["**/*.swift"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-swift"
+artifact = "swift.wasm"
+parser_filename = "swift"

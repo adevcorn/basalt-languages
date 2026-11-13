@@ -1,0 +1,156 @@
+{
+  "imported_at": "2026-11-13T10:11:49.002729+00:00",
+  "note": "Phase 1 import; history not yet grafted.",
+  "sources": [
+    {
+      "path": "plugins/parser/csharp",
+      "repo": "adevcorn/basalt-plugin-parser-csharp",
+      "commit": "bf50e631690619f281e3b3e4775cff950340ec89"
+    },
+    {
+      "path": "plugins/parser/kotlin",
+      "repo": "adevcorn/basalt-plugin-parser-kotlin",
+      "commit": "8a5403e67120a2819fd31f916581429dd62f563d"
+    },
+    {
+      "path": "plugins/parser/gleam",
+      "repo": "adevcorn/basalt-plugin-parser-gleam",
+      "commit": "d73258249b1714726c7ec5b388b0f8295774f5de"
+    },
+    {
+      "path": "plugins/parser/typescript",
+      "repo": "adevcorn/basalt-plugin-parser-typescript",
+      "commit": "252a8011c3d660f5680195497bf44f4ecdf77d7e"
+    },
+    {
+      "path": "plugins/parser/yaml",
+      "repo": "adevcorn/basalt-plugin-parser-yaml",
+      "commit": "81f2ee7cc1c45de4ac4b5eaeaf0eafdb27bc6e63"
+    },
+    {
+      "path": "plugins/parser/rust",
+      "repo": "adevcorn/basalt-plugin-parser-rust",
+      "commit": "20059f0d94342206e02699395cb72b733680fa96"
+    },
+    {
+      "path": "plugins/parser/swift",
+      "repo": "adevcorn/basalt-plugin-parser-swift",
+      "commit": "1bf7d6f3d60d980b2e2a3951e28225293de25ed6"
+    },
+    {
+      "path": "plugins/parser/c",
+      "repo": "adevcorn/basalt-plugin-parser-c",
+      "commit": "392e9c524e32f6995538c9eebf0e463c1cf4d711"
+    },
+    {
+      "path": "plugins/parser/markdown",
+      "repo": "adevcorn/basalt-plugin-parser-markdown",
+      "commit": "6a213357bbf223d5995322d7931f3071eb88e751"
+    },
+    {
+      "path": "plugins/parser/toml",
+      "repo": "adevcorn/basalt-plugin-parser-toml",
+      "commit": "1dbf745fb6dbc7c2f9190008213cc5f068a1f0b2"
+    },
+    {
+      "path": "plugins/facts/csharp",
+      "repo": "adevcorn/basalt-plugin-semantic-facts-csharp",
+      "commit": "5d5a98b21646daf72c17d99fdd1389dde07c6963"
+    },
+    {
+      "path": "plugins/facts/kotlin",
+      "repo": "adevcorn/basalt-plugin-semantic-facts-kotlin",
+      "commit": "fe15a2d7cb1a62eb16e99e91729ba94550ad4b89"
+    },
+    {
+      "path": "plugins/facts/gleam",
+      "repo": "adevcorn/basalt-plugin-semantic-facts-gleam",
+      "commit": "c9b7f16cc6c26d14b9bcaf3d6ecd469098bb55f1"
+    },
+    {
+      "path": "plugins/facts/typescript",
+      "repo": "adevcorn/basalt-plugin-semantic-facts-typescript",
+      "commit": "7e862cbb5a66a248c2138a32b14252813135fe3e"
+    },
+    {
+      "path": "plugins/facts/rust",
+      "repo": "adevcorn/basalt-plugin-semantic-facts-rust",
+      "commit": "fff8864c2de0e228fa75bee382e9583e97fffac0"
+    },
+    {
+      "path": "plugins/providers/project-model/dotnet",
+      "repo": "adevcorn/basalt-plugin-dotnet-project-model",
+      "commit": "d6b8deb7e4a74bf4277f49e77301338748ba96f3"
+    },
+    {
+      "path": "plugins/providers/project-model/gradle-android",
+      "repo": "adevcorn/basalt-plugin-gradle-android-project-model",
+      "commit": "b31cf03b3a9a83ed15b4c065cb9ed3c1047b7312"
+    },
+    {
+      "path": "plugins/providers/project-model/gleam",
+      "repo": "adevcorn/basalt-plugin-gleam-project-model",
+      "commit": "c10e7734511ddb5a72c48ca3b727c813f1c864d5"
+    },
+    {
+      "path": "plugins/providers/project-model/yarn-workspaces",
+      "repo": "adevcorn/basalt-plugin-project-model-yarn-workspaces",
+      "commit": "9e778c28be0d2ecb7a9c571d187b94dd0ce9ba58"
+    },
+    {
+      "path": "plugins/providers/project-model/cargo",
+      "repo": "adevcorn/basalt-plugin-cargo-project-model",
+      "commit": "e14d262dc940bc7876b39d07f21d011d881bb733"
+    },
+    {
+      "path": "plugins/providers/project-model/swift",
+      "repo": "adevcorn/basalt-plugin-swift-project-model",
+      "commit": "36f6a6bcff0e754759b7718c0b44129d9aa52a38"
+    },
+    {
+      "path": "plugins/providers/api-index/dotnet",
+      "repo": "adevcorn/basalt-plugin-dotnet-api-index",
+      "commit": "6fd75e7fe46bb773e0813a539470c353c2f01a04"
+    },
+    {
+      "path": "plugins/providers/review-actions/rust",
+      "repo": "adevcorn/basalt-plugin-rust-review-actions",
+      "commit": "36f4aa5178ad9aed89d02894ee799a44e861d1f6"
+    },
+    {
+      "path": "plugins/providers/diagnostics/lsp-gleam",
+      "repo": "adevcorn/basalt-plugin-lsp-gleam",
+      "commit": "a0a3909ecaec854d8c3de0a371a9992b40c17bd3"
+    },
+    {
+      "path": "plugins/providers/diagnostics/lsp-rust-analyzer",
+      "repo": "adevcorn/basalt-plugin-lsp-rust-analyzer",
+      "commit": "7f8c3496ac808addf7a85599b27c75293c4b8a12"
+    },
+    {
+      "path": "plugins/providers/diagnostics/swift-lsp",
+      "repo": "adevcorn/basalt-plugin-swift-lsp",
+      "commit": "893b2a84c4e633b3421d24c4f542a514072f16d9"
+    },
+    {
+      "path": "plugins/providers/addons/backstage-catalog",
+      "repo": "adevcorn/basalt-plugin-backstage-catalog",
+      "commit": "91b59dd23c7d8f132640200f9ff8b53df72925f2"
+    },
+    {
+      "path": "plugins/providers/addons/agent-backstage-yarn",
+      "repo": "adevcorn/basalt-plugin-agent-backstage-yarn",
+      "commit": "034615f2fc28fe71f2dbc4c037435e130a1b6777"
+    },
+    {
+      "path": "plugins/providers/addons/rust-ecs-inspector",
+      "repo": "adevcorn/basalt-plugin-inspector-rust-ecs",
+      "commit": "f4066c20ae6239f9545b04dc67e1e0b11a7202d4"
+    },
+    {
+      "path": "plugins/providers/addons/semantic-retrieval",
+      "repo": "adevcorn/basalt-plugin-semantic-retrieval",
+      "commit": "391547cedbb99a83182766348d891c52b541c9ce"
+    }
+  ]
+}

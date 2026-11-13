@@ -1,0 +1,19 @@
+[preset]
+name = "web"
+version = "0.1.0"
+description = "TypeScript/JavaScript: language support and Yarn workspace model"
+markers = ["**/package.json", "**/tsconfig.json", "**/yarn.lock", "**/pnpm-lock.yaml", "**/package-lock.json", "**/bun.lockb"]
+language_globs = ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mts", "**/*.cts", "**/*.mjs", "**/*.cjs"]
+require_language_files = true
+
+[[member]]
+name = "language-typescript"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-yarn-workspaces"
+version = "^0.1"
+required = false
+recommended = true

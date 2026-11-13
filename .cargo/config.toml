@@ -1,0 +1,7 @@
+[target.wasm32-wasip1]
+linker = "rust-lld"
+
+# Capability plugins import host functions under module "env" that wasmtime
+# provides at runtime. Leave them as imports instead of failing the link.
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "link-args=--allow-undefined"]

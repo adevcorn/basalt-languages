@@ -1,0 +1,12 @@
+[pack]
+name = "language-c"
+version = "0.1.0"
+language = "c"
+capabilities = ["language@c/v1"]
+file_globs = ["**/*.c", "**/*.h", "**/*.hpp", "**/*.hh"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-c"
+artifact = "c.wasm"
+parser_filename = "c"

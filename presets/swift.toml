@@ -1,0 +1,25 @@
+[preset]
+name = "swift"
+version = "0.1.0"
+description = "Swift: language support, project model, and SourceKit-LSP"
+markers = ["**/Package.swift", "**/*.xcodeproj/project.pbxproj", "**/*.xcworkspace/contents.xcworkspacedata", "**/Podfile"]
+language_globs = ["**/*.swift"]
+require_language_files = true
+
+[[member]]
+name = "language-swift"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-swift"
+version = "^0.1"
+required = false
+recommended = true
+
+[[member]]
+name = "lsp-swift"
+version = "^0.1"
+required = false
+recommended = true

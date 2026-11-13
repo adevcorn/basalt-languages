@@ -1,0 +1,12 @@
+[pack]
+name = "language-markdown"
+version = "0.1.0"
+language = "md"
+capabilities = ["language@md/v1"]
+file_globs = ["**/*.md"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-markdown"
+artifact = "md.wasm"
+parser_filename = "md"

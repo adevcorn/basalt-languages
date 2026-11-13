@@ -1,0 +1,13 @@
+[preset]
+name = "c-cpp"
+version = "0.1.0"
+description = "C/C++ language support"
+markers = ["**/CMakeLists.txt", "**/Makefile", "**/meson.build", "**/compile_commands.json", "**/conanfile.txt", "**/conanfile.py", "**/vcpkg.json"]
+language_globs = ["**/*.c", "**/*.h", "**/*.hpp", "**/*.hh"]
+require_language_files = true
+
+[[member]]
+name = "language-c"
+version = "^0.1"
+required = true
+recommended = true

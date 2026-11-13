@@ -1,0 +1,18 @@
+[pack]
+name = "language-kotlin"
+version = "0.1.0"
+language = "kt"
+capabilities = ["language@kt/v1", "semantic-facts@kotlin/v1"]
+file_globs = ["**/*.kt", "**/*.kts"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-kotlin"
+artifact = "kt.wasm"
+parser_filename = "kt"
+
+[[artifact]]
+kind = "plugin"
+package = "basalt-plugin-semantic-facts-kotlin"
+artifact = "semantic_facts_kotlin.wasm"
+install_as = "semantic-facts-kotlin"

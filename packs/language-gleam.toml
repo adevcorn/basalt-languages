@@ -1,0 +1,18 @@
+[pack]
+name = "language-gleam"
+version = "0.1.0"
+language = "gleam"
+capabilities = ["language@gleam/v1", "semantic-facts@gleam/v1"]
+file_globs = ["**/*.gleam"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-gleam"
+artifact = "gleam.wasm"
+parser_filename = "gleam"
+
+[[artifact]]
+kind = "plugin"
+package = "basalt-plugin-semantic-facts-gleam"
+artifact = "semantic_facts_gleam.wasm"
+install_as = "semantic-facts-gleam"

@@ -1,0 +1,25 @@
+[preset]
+name = "dotnet"
+version = "0.1.0"
+description = ".NET: C# language support, project model, API index"
+markers = ["**/*.sln", "**/*.slnx", "**/*.csproj", "**/*.fsproj", "**/*.vbproj", "**/global.json", "**/Directory.Build.props"]
+language_globs = ["**/*.cs"]
+require_language_files = true
+
+[[member]]
+name = "language-csharp"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-dotnet"
+version = "^0.1"
+required = false
+recommended = true
+
+[[member]]
+name = "api-index-dotnet"
+version = "^0.1"
+required = false
+recommended = true

@@ -1,0 +1,47 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/language-core",
+    "crates/testkit",
+    "plugins/parser/csharp",
+    "plugins/parser/kotlin",
+    "plugins/parser/gleam",
+    "plugins/parser/typescript",
+    "plugins/parser/yaml",
+    "plugins/parser/rust",
+    "plugins/parser/swift",
+    "plugins/parser/c",
+    "plugins/parser/markdown",
+    "plugins/parser/toml",
+    "plugins/facts/csharp",
+    "plugins/facts/kotlin",
+    "plugins/facts/gleam",
+    "plugins/facts/typescript",
+    "plugins/facts/rust",
+    "plugins/providers/project-model/dotnet",
+    "plugins/providers/project-model/gradle-android",
+    "plugins/providers/project-model/gleam",
+    "plugins/providers/project-model/yarn-workspaces",
+    "plugins/providers/project-model/cargo",
+    "plugins/providers/project-model/swift",
+    "plugins/providers/api-index/dotnet",
+    "plugins/providers/review-actions/rust",
+    "plugins/providers/diagnostics/lsp-gleam",
+    "plugins/providers/diagnostics/lsp-rust-analyzer",
+    "plugins/providers/diagnostics/swift-lsp",
+    "plugins/providers/addons/backstage-catalog",
+    "plugins/providers/addons/agent-backstage-yarn",
+    "plugins/providers/addons/rust-ecs-inspector",
+    "plugins/providers/addons/semantic-retrieval",
+]
+
+[workspace.dependencies]
+basalt-plugin-sdk = { git = "https://github.com/adevcorn/basalt-plugin-sdk", tag = "v0.1.6" }
+
+# Standardized for all plugins. Parsers previously used "z"; providers used "s".
+[profile.release]
+opt-level = "z"
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true

@@ -1,0 +1,12 @@
+[pack]
+name = "language-toml"
+version = "0.1.0"
+language = "toml"
+capabilities = ["language@toml/v1"]
+file_globs = ["**/*.toml"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-toml"
+artifact = "toml.wasm"
+parser_filename = "toml"

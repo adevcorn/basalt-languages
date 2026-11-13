@@ -1,0 +1,31 @@
+[preset]
+name = "rust"
+version = "0.1.0"
+description = "Rust: language support, Cargo model, review actions, and rust-analyzer"
+markers = ["**/Cargo.toml", "**/Cargo.lock", "**/rust-toolchain.toml"]
+language_globs = ["**/*.rs"]
+require_language_files = true
+
+[[member]]
+name = "language-rust"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-cargo"
+version = "^0.1"
+required = false
+recommended = true
+
+[[member]]
+name = "review-actions-rust"
+version = "^0.1"
+required = false
+recommended = true
+
+[[member]]
+name = "lsp-rust-analyzer"
+version = "^0.1"
+required = false
+recommended = true

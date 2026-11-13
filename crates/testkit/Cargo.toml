@@ -1,0 +1,8 @@
+[package]
+name = "testkit"
+version = "0.1.0"
+edition = "2021"
+description = "Golden-corpus harness for Basalt language packs"
+
+[dependencies]
+language-core = { path = "../language-core" }

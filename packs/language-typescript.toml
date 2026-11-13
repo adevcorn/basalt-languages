@@ -1,0 +1,18 @@
+[pack]
+name = "language-typescript"
+version = "0.1.0"
+language = "ts"
+capabilities = ["language@ts/v1", "semantic-facts@ts/v1"]
+file_globs = ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mts", "**/*.cts", "**/*.mjs", "**/*.cjs"]
+
+[[artifact]]
+kind = "parser"
+package = "basalt-plugin-parser-typescript"
+artifact = "ts.wasm"
+parser_filename = "ts"
+
+[[artifact]]
+kind = "plugin"
+package = "basalt-plugin-semantic-facts-typescript"
+artifact = "semantic_facts_typescript.wasm"
+install_as = "semantic-facts-typescript"

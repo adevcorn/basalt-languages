@@ -1,0 +1,8 @@
+[package]
+name = "language-core"
+version = "0.1.0"
+edition = "2021"
+description = "Shared runtime constants and helpers for Basalt language packs"
+
+[lib]
+crate-type = ["rlib"]

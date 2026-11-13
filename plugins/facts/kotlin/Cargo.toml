@@ -1,0 +1,12 @@
+[package]
+name = "basalt-plugin-semantic-facts-kotlin"
+version = "0.1.0"
+edition = "2021"
+description = "Semantic facts (classes, functions, imports) for Kotlin"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# serde feature required: without it serialize_facts is a stub returning empty.
+basalt-plugin-sdk = { workspace = true, features = ["serde"] }

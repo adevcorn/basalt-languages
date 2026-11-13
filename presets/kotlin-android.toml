@@ -1,0 +1,19 @@
+[preset]
+name = "kotlin-android"
+version = "0.1.0"
+description = "Kotlin/Android: language support and Gradle project model"
+markers = ["**/settings.gradle", "**/settings.gradle.kts", "**/build.gradle", "**/build.gradle.kts", "**/gradle.properties", "**/AndroidManifest.xml"]
+language_globs = ["**/*.kt", "**/*.kts"]
+require_language_files = true
+
+[[member]]
+name = "language-kotlin"
+version = "^0.1"
+required = true
+recommended = true
+
+[[member]]
+name = "project-model-gradle-android"
+version = "^0.1"
+required = false
+recommended = true
