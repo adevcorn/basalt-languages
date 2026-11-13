@@ -86,3 +86,10 @@ imported instead of the stale in-tree copy under `basalt/`.
 - Parsers keep their original filenames (`cs.wasm`, `kt.wasm`, `gleam.wasm`,
   `ts.wasm`, `yaml.wasm`, `rs.wasm`, `swift.wasm`, `c.wasm`, `md.wasm`,
   `toml.wasm`) so existing `ParserRegistry` discovery keeps working.
+- `semantic-facts-typescript` gained a host-only `invoke_capability` stub so
+  `cargo check`/`cargo test` works off-wasm; the wasm build uses the SDK's real
+  host-capability import.
+- `dotnet-api-index` tests that pointed at the author's absolute checkout now
+  skip when those paths are absent, so the suite is hermetic in CI.
+- Shared-code extraction into `language-core` and the golden corpus are still
+  Phase 1 follow-ups; the crates currently keep their original implementations.
