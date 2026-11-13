@@ -63,7 +63,7 @@ fn log_info(msg: &str) {
 basalt_plugin_meta! {
     name:              "semantic-facts-rust",
     version:           "0.1.0",
-    hook_flags:        CAP_CAPABILITY_HANDLE | CAP_REVIEW_ACTIONS | CAP_BUILD_SYSTEM | CAP_TEST_RUNNER | CAP_WASM_VERIFY,
+    hook_flags:        CAP_CAPABILITY_HANDLE,
     provides:          "semantic-facts@rust/v1",
     requires:          "",
     optional_requires: "",

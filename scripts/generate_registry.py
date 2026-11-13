@@ -88,6 +88,13 @@ MEMBER_LEGACY = {
     "lsp-swift": "swift-lsp",
 }
 
+# Registry metadata corrections applied while merging.
+CAPABILITY_OVERRIDES = {
+    # swift-lsp exposes diagnostics/hover; the dedicated swift-project-model
+    # owns PROJECT_MODEL.
+    "swift-lsp": ["DIAGNOSTICS", "HOVER"],
+}
+
 PACK_LEGACY = {
     "language-csharp": ["parser-csharp", "semantic-facts-csharp"],
     "language-kotlin": ["parser-kotlin", "semantic-facts-kotlin"],
@@ -174,6 +181,8 @@ def main() -> None:
             }
             plugins.append(entry)
             by_name[name] = entry
+        if name in CAPABILITY_OVERRIDES:
+            entry["capabilities"] = CAPABILITY_OVERRIDES[name]
         entry["download_url"] = f"{base_url}/{asset}"
         entry["kind"] = "provider"
         entry["homepage"] = REPO
