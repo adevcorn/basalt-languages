@@ -96,7 +96,7 @@ the monorepo release `--tag` and includes SHA-256 checksums from `--dist`
 not byte-identical to local builds):
 
 ```bash
-gh release download v0.1.0 --repo adevcorn/basalt-languages -D /tmp/relassets
+gh release download v0.1.1 --repo adevcorn/basalt-languages -D /tmp/relassets
 python3 scripts/generate_registry.py \
   --merge ../basalt-registry/index.json \
   --dist /tmp/relassets \
