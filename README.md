@@ -69,6 +69,24 @@ cargo test --workspace
 - `release.yml` builds the same matrix and attaches all `.wasm` files to a
   `v*` GitHub release.
 
+## Registry
+
+`scripts/generate_registry.py` produces registry entries for the language packs,
+presets, and providers. It points artifact URLs at the monorepo release `--tag`
+and includes SHA-256 checksums from `--dist` (download the actual release assets,
+not the local build, because CI builds are not byte-identical to local builds):
+
+```bash
+gh release download v0.1.0 --repo adevcorn/basalt-languages -D /tmp/relassets
+python3 scripts/generate_registry.py \
+  --merge ../basalt-registry/index.json \
+  --dist /tmp/relassets \
+  --out /tmp/index.next.json
+```
+
+The live registry is updated separately once a core release can consume
+`kind: "preset"` entries.
+
 ## Provenance
 
 `sources.json` records the original repository and commit for every imported
