@@ -300,29 +300,43 @@ pub fn review_action_plan(
 
 const MAX_STATE_PATH: usize = 1024;
 
-fn decode_state(state: &[u8]) -> (u32, String) {
+fn decode_state(state: &[u8]) -> (u32, String, Option<String>) {
     if state.len() < 4 {
-        return (0, String::new());
+        return (0, String::new(), None);
     }
     let counter = u32::from_le_bytes([state[0], state[1], state[2], state[3]]);
     if state.len() < 6 {
-        return (counter, String::new());
+        return (counter, String::new(), None);
     }
-    let len = u16::from_le_bytes([state[4], state[5]]) as usize;
-    let end = (6 + len).min(state.len());
-    (
-        counter,
-        String::from_utf8_lossy(&state[6..end]).into_owned(),
-    )
+    let path_len = u16::from_le_bytes([state[4], state[5]]) as usize;
+    let path_end = (6 + path_len).min(state.len());
+    let last_path = String::from_utf8_lossy(&state[6..path_end]).into_owned();
+    let rest = &state[path_end..];
+    let current_fail_vendor = if rest.len() >= 2 {
+        let vendor_len = u16::from_le_bytes([rest[0], rest[1]]) as usize;
+        let vendor_end = (2 + vendor_len).min(rest.len());
+        if vendor_len > 0 && vendor_end >= 2 + vendor_len {
+            Some(String::from_utf8_lossy(&rest[2..2 + vendor_len]).into_owned())
+        } else {
+            None
+        }
+    } else {
+        None
+    };
+    (counter, last_path, current_fail_vendor)
 }
 
-fn encode_state(counter: u32, last_path: &str) -> Vec<u8> {
+fn encode_state(counter: u32, last_path: &str, current_fail_vendor: Option<&str>) -> Vec<u8> {
     let bytes = last_path.as_bytes();
     let len = bytes.len().min(MAX_STATE_PATH) as u16;
-    let mut out = Vec::with_capacity(6 + len as usize);
+    let vendor_bytes = current_fail_vendor.unwrap_or("").as_bytes();
+    let vendor_len = vendor_bytes.len().min(MAX_STATE_PATH) as u16;
+    let mut out = Vec::with_capacity(6 + len as usize + 2 + vendor_len as usize);
     out.extend_from_slice(&counter.to_le_bytes());
     out.extend_from_slice(&len.to_le_bytes());
     out.extend_from_slice(&bytes[..len as usize]);
+    out.extend_from_slice(&vendor_len.to_le_bytes());
+    out.extend_from_slice(&vendor_bytes[..vendor_len as usize]);
     out
 }
 
@@ -504,8 +518,9 @@ fn push_test_result(
     line: &str,
     path: &str,
     passed: bool,
-) {
+) -> String {
     let vendor_id = next_vendor_id(counter);
+    let returned_vendor_id = vendor_id.clone();
     let failure = if passed {
         None
     } else {
@@ -530,6 +545,7 @@ fn push_test_result(
         exit_code: if passed { 0 } else { 1 },
         output_lines: failure.into_iter().collect(),
     });
+    returned_vendor_id
 }
 
 fn parse_output_line(
@@ -537,22 +553,33 @@ fn parse_output_line(
     line: &[u8],
     state: &[u8],
 ) -> (Vec<u8>, Vec<AgentEvent>) {
-    let (mut counter, mut last_path) = decode_state(state);
+    let (mut counter, mut last_path, mut current_fail_vendor) = decode_state(state);
     let raw = String::from_utf8_lossy(line);
     let stripped = strip_ansi(raw.as_ref());
     let trimmed = stripped.trim();
     let mut events: Vec<AgentEvent> = Vec::new();
 
     if trimmed.is_empty() {
-        return (encode_state(counter, &last_path), events);
+        return (encode_state(counter, &last_path, current_fail_vendor.as_deref()), events);
     }
 
     let diagnostics_enabled = action_id != Some(ACTION_TEST);
 
     if let Some(path) = trimmed.strip_prefix("PASS ") {
+        current_fail_vendor = None;
         push_test_result(&mut events, &mut counter, trimmed, path.trim(), true);
     } else if let Some(path) = trimmed.strip_prefix("FAIL ") {
-        push_test_result(&mut events, &mut counter, trimmed, path.trim(), false);
+        let vendor_id = push_test_result(&mut events, &mut counter, trimmed, path.trim(), false);
+        current_fail_vendor = Some(vendor_id);
+    } else if trimmed.starts_with("Test Suites:") || trimmed.starts_with("Ran all test suites") {
+        current_fail_vendor = None;
+    } else if current_fail_vendor.is_some() {
+        if let Some(vendor_id) = &current_fail_vendor {
+            events.push(AgentEvent::AppendToEntry {
+                vendor_id: vendor_id.clone(),
+                text: trimmed.to_string(),
+            });
+        }
     } else if diagnostics_enabled {
         if looks_like_source_path(trimmed) {
             last_path = trimmed.to_string();
@@ -583,7 +610,7 @@ fn parse_output_line(
         }
     }
 
-    (encode_state(counter, &last_path), events)
+    (encode_state(counter, &last_path, current_fail_vendor.as_deref()), events)
 }
 
 #[basalt_plugin]
@@ -833,7 +860,7 @@ mod tests {
             AgentEvent::NewEntry { vendor_id, .. } => assert_eq!(vendor_id, "yarn-1"),
             other => panic!("expected NewEntry, got {other:?}"),
         }
-        let (counter, _) = decode_state(&state);
+        let (counter, _, _) = decode_state(&state);
         assert_eq!(counter, 2);
     }
 }
