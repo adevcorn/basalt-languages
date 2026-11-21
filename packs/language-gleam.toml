@@ -4,6 +4,8 @@ version = "0.1.0"
 language = "gleam"
 capabilities = ["language@gleam/v1", "semantic-facts@gleam/v1"]
 file_globs = ["**/*.gleam"]
+supports_in_memory = true
+default_shadow_mode = "minimal"
 
 [[artifact]]
 kind = "parser"
